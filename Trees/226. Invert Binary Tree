@@ -1,0 +1,21 @@
+class Solution {
+public:
+
+    void Swap(TreeNode* root){
+        if(!root){
+            return;
+        }
+        TreeNode* abc=root->left;
+        root->left=root->right;
+        root->right=abc;
+
+        Swap(root->left);
+        Swap(root->right);
+    }
+
+    TreeNode* invertTree(TreeNode* root) {
+        TreeNode* ans=root;
+        Swap(root);
+        return ans;
+    }
+};
