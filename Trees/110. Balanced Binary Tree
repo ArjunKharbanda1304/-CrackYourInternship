@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool ans=true;
+
+    int height(TreeNode* root){
+        if(!root){
+            return NULL;
+        }
+
+        int lfh=height(root->left);
+        int rht=height(root->right);
+
+        if(abs(lfh-rht)>1){
+            ans=false;
+        }
+        return 1+max(lfh,rht);
+    }
+    bool isBalanced(TreeNode* root) {
+        height(root);
+        return ans;
+    }
+};
