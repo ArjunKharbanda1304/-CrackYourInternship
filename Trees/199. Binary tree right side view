@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int>v;
+        helper(root,v,0);
+        return v;
+    }
+    
+    void helper(TreeNode* root, vector<int>& v, int depth) {
+        if(root==nullptr){
+            return;
+        }
+
+        if(depth==v.size()){
+            v.push_back(root->val);
+        }
+
+        helper(root->right, v, depth+1);
+        helper(root->left, v, depth+1);
+    }
+};
