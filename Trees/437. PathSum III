@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int count=0;
+    void checkPath(TreeNode* root,long long currentSum , int targetSum){
+        if(!root){
+            return;
+        }
+
+        currentSum+=root->val;
+        if(currentSum==targetSum){
+            count++;
+        }
+
+        checkPath(root->left,currentSum,targetSum);
+
+        checkPath(root->right,currentSum,targetSum);
+        
+    }
+
+    void findPaths(TreeNode* root,int targetSum){
+        if(!root) return;
+
+        checkPath(root,0,targetSum);
+
+        findPaths(root->left,targetSum);
+        findPaths(root->right,targetSum);
+    }
+    int pathSum(TreeNode* root, int targetSum) {
+        if(!root) return 0;
+        findPaths(root,targetSum);
+
+        return count;
+    }
+};
