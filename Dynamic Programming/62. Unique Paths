@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int uniquePaths(int m, int n) {
+        
+        vector<int> aboveRow(n,1);
+
+        for(int row=1; row < m ; row++){
+
+            vector<int> currRow(n ,1);
+
+            for(int col=1 ; col<n ; col++){
+                
+                currRow[col]=currRow[col-1]+aboveRow[col];
+            }
+            aboveRow= currRow;
+        }
+
+        return aboveRow[n-1];
+
+    }
+};
