@@ -5,6 +5,7 @@ public:
 
         if(originalColor!=color){
             fill(image, sr,sc,originalColor, color);
+
         }
         return image;
     }
